@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  php:
+    image: php:7.3-apache
+    depends_on:
+      - db
+    ports:
+      - "8090:80"
+    volumes:
+      - ./source/ecshop:/var/www/html
+
+  db:
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: example
